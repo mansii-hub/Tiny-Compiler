@@ -109,7 +109,7 @@ This project was developed as a group project for the **Compiler Design** subjec
 
 - Ritin Gusain
 - Ankita Negi
-- Saloni Negi
+- Saloni Rawat
 - Mansi Gusain
 
 
