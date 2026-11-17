@@ -88,6 +88,27 @@ The compiler reads the source program from `test.c` and displays the output of e
 - `test.c` – Nested conditional statements. The simulator produced a return value of `2`.
 - `test1.c` – A loop using conditions, `break`, and `continue`. The simulator produced a return value of `16`.
 
+
+## Automated Tests
+
+The project includes 35 automated unit tests covering:
+
+- Lexer – tokenization, keywords, identifiers, numbers, and invalid characters.
+- Parser – assignments, variable declarations, functions, and conditional statements.
+- Semantic Analyzer – variable declarations and semantic error handling.
+- Code Generator – arithmetic, assignments, comparisons, and conditional jumps.
+- Optimizer – constant folding and dead code elimination.
+- Intermediate Code Generator – expressions, assignments, if-else, while loops, for loops, break, and continue.
+
+Run all tests using:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+All 35 tests passed during the latest test run.
+
+
 ## Limitations
 
 - Supports a subset of C-like syntax, not the complete C language.
@@ -96,12 +117,14 @@ The compiler reads the source program from `test.c` and displays the output of e
 - The simulator evaluates original TAC rather than generated pseudo-assembly.
 - Optimization and language support are basic and need further testing.
 
+
 ## Future Improvements
 
-- Add automated unit tests.
+- Expand automated test coverage for additional edge cases.
 - Improve semantic analysis and error handling.
 - Expand optimization techniques.
 - Improve target-code generation and execution support.
+
 
 ## Project Team
 
