@@ -1,4 +1,5 @@
-﻿import unittest
+﻿
+import unittest
 from lexer import Lexer
 from parser import Parser
 from semantic_analyzer import SemanticAnalyzer
@@ -19,6 +20,11 @@ class TestSemanticAnalyzer(unittest.TestCase):
 
     def test_undeclared_variable_usage(self):
         code = "int main() { return y; }"
+        with self.assertRaisesRegex(Exception, "used before declaration"):
+            analyze_code(code)
+
+    def test_undeclared_variable_in_initializer(self):
+        code = "int main() { int x = y; return x; }"
         with self.assertRaisesRegex(Exception, "used before declaration"):
             analyze_code(code)
 

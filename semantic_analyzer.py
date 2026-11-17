@@ -12,16 +12,30 @@ class SemanticAnalyzer:
             for stmt in node.children:
                 self.analyze(stmt)
 
+   
         elif node.label == "VarDecl":
             var_type = node.children[0].label
+
             for child in node.children[1:]:
                 if child.label == "Init":
                     var_name = child.children[0].label
+
+                    if var_name in self.symbol_table:
+                        raise Exception(f"Semantic Error: Variable '{var_name}' already declared.")
+
+                    self.symbol_table.add(var_name)
+
+                    # Check the initializer expression
+                    self.analyze(child.children[1])
+
                 else:
                     var_name = child.label
-                if var_name in self.symbol_table:
-                    raise Exception(f"Semantic Error: Variable '{var_name}' already declared.")
-                self.symbol_table.add(var_name)
+
+                    if var_name in self.symbol_table:
+                        raise Exception(f"Semantic Error: Variable '{var_name}' already declared.")
+
+                    self.symbol_table.add(var_name)
+
 
         elif node.label == "Assign":
             var_name = node.children[0].label
